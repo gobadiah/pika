@@ -2233,6 +2233,9 @@ class BlockingChannel:
                               delivery tag is zero, this indicates
                               acknowledgement of all outstanding messages.
         """
+        LOGGER.debug(
+            f"basic_ack for channel {self.channel_number} and delivery_tag {delivery_tag}"
+        )
         self._impl.basic_ack(delivery_tag=delivery_tag, multiple=multiple)
         self._flush_output()
 
